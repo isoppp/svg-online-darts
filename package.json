@@ -17,7 +17,7 @@
     "dev": "npm-run-all clean build:** -p watch:** serve",
     "serve": "autoreload-server -p 8080 -d ./dist",
     "start": "npm-run-all clean build:** -p serve",
-    "deploy": "cp -rf dist docs",
+    "deploy": "rm -rf docs && cp -rf dist docs",
     "watch:css": "watch \"npm run build:css\" src/css --wait 1 --interval 1",
     "watch:html": "watch \"npm run build:html\" src/html --wait 1 --interval 1",
     "watch:img": "watch \"npm run build:img\" src/img --wait 1 --interval 1",
