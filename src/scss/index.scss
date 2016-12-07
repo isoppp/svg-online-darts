@@ -1,1 +1,181 @@
+body {
+  padding: 20px 0;
+  width: 980px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-family: 'Lato', sans-serif;
 
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.caution {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contents {
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+}
+
+.main {
+  padding: 20px;
+  width: 540px;
+}
+
+//=================== side
+.side {
+  flex-grow: 1;
+  border-left: 1px solid #aaa;
+  padding: 20px;
+  color: #333;
+}
+
+.sideBox {
+  &:not(:last-of-type) {
+    &:after {
+      content: "";
+      display: block;
+      width: 50%;
+      border-bottom: 1px solid #aaa;
+      margin: 30px auto;
+    }
+  }
+}
+
+.title {
+  font-family: 'Aref Ruqaa', serif;
+  border-bottom: 2px solid skyblue;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+
+  .title-game {
+    font-size: 1.2em;
+    padding-left: 10px;
+  }
+}
+
+.subTitle {
+  font-family: 'Aref Ruqaa', serif;
+  border-left: 5px solid skyblue;
+  padding-left: 15px;
+  margin-bottom: 20px
+}
+
+//=================== darts
+.darts {
+  display: block;
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 50px black;
+  overflow: hidden;
+}
+
+svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+}
+
+circle {
+  pointer-events: visibleStroke;
+  fill: rgba(0, 0, 0, 0);
+  stroke-width: 31.8309886184;
+}
+
+.board {
+  stroke: #000;
+  stroke-dashoffset: 27.5;
+  cx: 31.8309886184;
+  cy: 31.8309886184;
+  r: 15.9154943092;
+  transform-origin: 50% 50%;
+
+  &:nth-of-type(2n) {
+    stroke: rgb(231, 228, 199);
+  }
+
+  &:hover {
+    stroke: blue !important;
+  }
+
+  &:active {
+    stroke: yellow !important;
+  }
+
+  @for $i from 0 through 20 {
+    $stroke: 5;
+    $empty: $i * 5;
+    $lastEmpty: 100 - $empty - 5;
+    &.board_#{$i} {
+      stroke-dasharray: 0, $empty, $stroke, $lastEmpty;
+    }
+  }
+
+  &_double {
+    stroke: red;
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 1;
+    transform: scale(2);
+
+    &:nth-of-type(2n) {
+      stroke: #11a615;
+    }
+
+    @for $i from 0 through 20 {
+      $stroke: 5;
+      $empty: $i * 5;
+      $lastEmpty: 100 - $empty - 5;;
+      &.board_#{$i} {
+        transform: scale(1.94);
+        stroke-dasharray: 0, $empty, $stroke, $lastEmpty;
+      }
+    }
+  }
+
+  &_triple {
+    stroke: red;
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 2;
+
+    &:nth-of-type(2n) {
+      stroke: #11a615;
+    }
+  }
+
+  &.board_bull {
+    stroke: #11a615;
+    stroke-dasharray: 100, 0;
+    stroke-dashoffset: 0;
+    transform: scale(0.075);
+  }
+
+  &.board_inBullFrame {
+    stroke: #ffffff;
+    stroke-dasharray: 100, 0;
+    stroke-dashoffset: 0;
+    transform: scale(0.035);
+  }
+
+  &.board_inBull {
+    stroke: #ff0000;
+    stroke-dasharray: 100, 0;
+    stroke-dashoffset: 0;
+    transform: scale(0.03);
+  }
+}
