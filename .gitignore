@@ -1,0 +1,22 @@
+# JetBrains
+.idea/
+
+# Mac
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# npm
+npm-debug*.log
+
+# dist
+dist/
+
+# node
+node_modules/

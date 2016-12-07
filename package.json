@@ -1,0 +1,67 @@
+{
+  "name": "svg-online-darts",
+  "version": "0.0.1",
+  "description": "online darts",
+  "license": "MIT",
+  "scripts": {
+    "autoprefixer": "postcss -r --use autoprefixer --config autoprefixer.json \"dist/css/**/*.css\"",
+    "build:css": "cpx \"src/**/*.css\" dist",
+    "build:html": "cpx \"src/html/**/*.html\" dist",
+    "build:img": "cpx \"src/**/*.{jpg,jpeg,png,webp,bmp}\" dist",
+    "build:js": "globify \"src/js/**/*.js\" --outfile=dist/js -v",
+    "build:pug": "pug src/pug --out dist --pretty",
+    "build:scss": "node-sass ./src/scss -o ./dist/css --output-style expanded && npm run autoprefixer",
+    "clean": "rimraf ./dist",
+    "cpx:css": "cpx \"src/**/*.css\" dist -v",
+    "cpx:html": "cpx \"src/**/*.html\" dist -v",
+    "dev": "npm-run-all clean build:** -p watch:** serve",
+    "serve": "autoreload-server -p 8080 -d ./dist",
+    "start": "npm-run-all clean build:** -p serve",
+    "deploy": "cp -rf dist docs",
+    "watch:css": "watch \"npm run build:css\" src/css --wait 1 --interval 1",
+    "watch:html": "watch \"npm run build:html\" src/html --wait 1 --interval 1",
+    "watch:img": "watch \"npm run build:img\" src/img --wait 1 --interval 1",
+    "watch:js": "watch \"npm run build:js\" src/js --wait 1 --interval 1",
+    "watch:pug": "watch \"npm run build:pug\" src/pug --wait 1 --interval 1",
+    "watch:scss": "watch \"npm run build:scss\" src/scss --wait 1 --interval 1"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "sourceMap": true
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "cpx": "^1.5.0",
+    "globify": "^1.2.2",
+    "node-sass": "^3.13.0",
+    "npm-run-all": "^3.1.1",
+    "postcss-cli": "^2.6.0",
+    "pug": "^2.0.0-beta6",
+    "pug-cli": "^1.0.0-alpha6",
+    "rimraf": "^2.5.4",
+    "simple-autoreload-server": "^0.2.6",
+    "watch": "^1.0.1",
+    "watchify": "^3.7.0",
+    "yargs": "^6.4.0"
+  }
+}
