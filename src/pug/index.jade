@@ -1,0 +1,59 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Aref+Ruqaa|Lato" rel="stylesheet")
+    link(rel="stylesheet" href="/css/index.css")
+    script(src="/js/index.js")
+    title svg online darts
+  body
+
+    - var points = [20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5]
+
+    .caution only support chrome browser and min width 980px in pc
+    .buttons
+      .btn.js-gameCountUp Count Up
+      .btn.js-gameZeroOne 01(301)
+      //.btn.js-gameCricket Cricket
+
+    .contents
+      .main
+        .changeButton.js-next Next
+        .darts
+          svg(viewbox='0 0 63.6619772368 63.6619772368')
+            - for (var i = 0; i < 20; ++i) {
+            circle(r='15.9154943092' class='board board_#{i}' data-point='#{points[i]}' data-magnification='1')
+            - }
+
+            - for (var i = 0; i < 20; ++i) {
+            circle(r='15.9154943092' class='board board_#{i} board_double' data-point='#{points[i]}' data-magnification='2')
+            - }
+
+            - for (var i = 0; i < 20; ++i) {
+            circle(r='15.9154943092' class='board board_#{i} board_triple' data-point='#{points[i]}' data-magnification='3')
+            - }
+
+            circle.board.board_bull(r='15.9154943092' data-point='50' data-magnification='1')
+            circle.board.board_inBullFrame(r='15.9154943092')
+            circle.board.board_inBull(r='15.9154943092' data-point='50' data-magnification='1')
+
+      .side
+        .title GAME
+          span.title-game.js-title Ready
+        .score.js-score 0
+
+        .sideBox
+          .subTitle Round
+          div.log.js-round
+            .roundWrapper
+              div.round
+                span Round
+                span.round-number.js-roundNumber 0
+                span :
+              span.roundScore.js-roundScore
+
+
+        .sideBox
+          .subTitle HISTORY
+          div.history.js-history
