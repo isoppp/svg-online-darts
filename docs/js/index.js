@@ -17578,13 +17578,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _jquery2.default)(function () {
   var game = void 0;
+  var $defaultRoundDom = (0, _jquery2.default)('.js-round').clone();
 
   (0, _jquery2.default)('.js-gameCountUp').on('click', function () {
+    (0, _jquery2.default)('.js-round').html($defaultRoundDom.html());
     game = new _Game2.default({ title: 'Count Up', gameMode: _GameVariables.gameMode.COUNT_UP });
     game.init();
   });
 
   (0, _jquery2.default)('.js-gameZeroOne').on('click', function () {
+    (0, _jquery2.default)('.js-round').html($defaultRoundDom.html());
     game = new _Game2.default({ title: '01(301)', maxRound: 10, gameMode: _GameVariables.gameMode.ZERO_ONE, score: 301 });
     game.init();
   });
